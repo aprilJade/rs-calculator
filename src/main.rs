@@ -5,7 +5,7 @@ use gtk::prelude::*;
 
 fn main() {
     let application = gtk::Application::new(
-        Some("com.github.gtk-rs.examples.grid-packing"),
+        Some("com.github.aprilJade.rs-calculator"),
         Default::default(),
     );
 
@@ -16,19 +16,19 @@ fn main() {
 fn build_ui(application: &gtk::Application) {
     // Create a new window, set its title and default size
     let window = gtk::ApplicationWindow::new(application);
-    window.set_title(Some("Grid Packing"));
-    window.set_default_size(320, 600);
+    window.set_title(Some("Calculator"));
 
     // Here we construct the grid that is going contain our buttons.
     let grid = gtk::Grid::builder()
         .margin_start(6)
         .margin_end(6)
-        .margin_top(6)
+        .margin_top(80)
         .margin_bottom(6)
         .halign(gtk::Align::Center)
         .valign(gtk::Align::Center)
         .row_spacing(0)
         .column_spacing(0)
+        .can_focus(false)
         .build();
     window.set_child(Some(&grid));
 
