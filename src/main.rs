@@ -46,7 +46,7 @@ fn build_ui(application: &gtk::Application) {
     let button_cancel = gtk::Button::with_label("AC");
     let button_sign = gtk::Button::with_label("+/-");
     let button_modular = gtk::Button::with_label("%");
-    let button_divider = gtk::Button::with_label("/");
+    let button_divider = gtk::Button::with_label("÷");
     let button_mutiplier = gtk::Button::with_label("x");
     let button_minus = gtk::Button::with_label("-");
     let button_plus = gtk::Button::with_label("+");
