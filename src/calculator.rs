@@ -5,7 +5,7 @@ pub fn calc(expression: String) -> String {
     let tokens: Vec<&str> = expression.as_str().split(' ').collect();
     for value in tokens.iter() {
         match String::from(*value).parse::<f64>() {
-            Ok(num) => postfix_exp.push(*value),
+            Ok(_num) => postfix_exp.push(*value),
             _ => {
                 if (*value).eq("+") || (*value).eq("-") {
                     while operator_stack.is_empty() == false {
