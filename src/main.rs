@@ -1,3 +1,4 @@
+mod calculator;
 use gtk4 as gtk;
 use gtk::prelude::*;
 use glib::clone;
@@ -108,11 +109,6 @@ fn build_ui(application: &gtk::Application) {
         text_view.set_text(text.as_str());
     }));
 
-    button_5.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "5");
-        text_view.set_text(text.as_str());
-    }));
-
     button_6.connect_clicked(clone!(@weak text_view => move |_btn| {
         let text = format!("{}{}", text_view.text().as_str(), "6");
         text_view.set_text(text.as_str());
@@ -136,18 +132,7 @@ fn build_ui(application: &gtk::Application) {
     button_clear.connect_clicked(clone!(@weak text_view => move |_btn| {
         text_view.set_text("");
     }));
-    /*
-
-    let button_sign = gtk::Button::with_label("+/-");
-    let button_percent = gtk::Button::with_label("%");
-    let button_divider = gtk::Button::with_label("÷");
-    let button_mutiplier = gtk::Button::with_label("x");
-    let button_minus = gtk::Button::with_label("-");
-    let button_plus = gtk::Button::with_label("+");
-    let button_equal = gtk::Button::with_label("=");
-    let button_point = gtk::Button::with_label(".");
-}
-*/
+    
     button_sign.connect_clicked(clone!(@weak text_view => move |_btn| {
         let ch = text_view.text().as_str().chars().nth(0).unwrap();
         let str = String::from(text_view.text());
@@ -162,9 +147,38 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_percent.connect_clicked(clone! (@weak text_view => move |_btn| {
-        let str = String::from(text_view.text());
-        let mut value = str.parse::<f64>().unwrap();
+        let mut value = String::from(text_view.text()).parse::<f64>().unwrap();
         value *= 0.01;
         text_view.set_text(value.to_string().as_str());
+    }));
+
+    button_mutiplier.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), "x");
+        text_view.set_text(text.as_str());
+    }));
+
+    button_divider.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), "÷");
+        text_view.set_text(text.as_str());
+    }));
+
+    button_minus.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), "-");
+        text_view.set_text(text.as_str());
+    }));
+
+    button_plus.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), "+");
+        text_view.set_text(text.as_str());
+    }));
+
+    button_point.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), ".");
+        text_view.set_text(text.as_str());
+    }));
+
+    button_equal.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let result = calculator::calc(String::from(text_view.text()));
+        text_view.set_text(result.to_string().as_str());
     }));
 }
