@@ -1,5 +1,6 @@
 # re-calculator
 This is minimal calculator implemented with rust programming language. 
+![img](/resource/rs-calculator.png)
 ## How to build
 0. This source need to cargo and gtk4 library. If they aren't installed, you should install on your environment.
 1. Clone, build, run this repository
