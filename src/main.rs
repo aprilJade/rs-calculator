@@ -1,4 +1,6 @@
 mod calculator;
+mod input_control;
+use input_control::*;
 use gtk4 as gtk;
 use gtk::prelude::*;
 use glib::clone;
@@ -83,52 +85,52 @@ fn build_ui(application: &gtk::Application) {
     window.show();
 
     button_0.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "0");
+        let text = format!("{}{}", text_view.text(), "0");
         text_view.set_text(text.as_str());
     }));
 
     button_1.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "1");
+        let text = format!("{}{}", text_view.text(), "1");
         text_view.set_text(text.as_str());
     }));
 
     button_2.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "2");
+        let text = format!("{}{}", text_view.text(), "2");
         text_view.set_text(text.as_str());
     }));
 
     button_3.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "3");
+        let text = format!("{}{}", text_view.text(), "3");
         text_view.set_text(text.as_str());
     }));
 
     button_4.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "4");
+        let text = format!("{}{}", text_view.text(), "4");
         text_view.set_text(text.as_str());
     }));
 
     button_5.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "5");
+        let text = format!("{}{}", text_view.text(), "5");
         text_view.set_text(text.as_str());
     }));
 
     button_6.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "6");
+        let text = format!("{}{}", text_view.text(), "6");
         text_view.set_text(text.as_str());
     }));
 
     button_7.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "7");
+        let text = format!("{}{}", text_view.text(), "7");
         text_view.set_text(text.as_str());
     }));
 
     button_8.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "8");
+        let text = format!("{}{}", text_view.text(), "8");
         text_view.set_text(text.as_str());
     }));
 
     button_9.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "9");
+        let text = format!("{}{}", text_view.text(), "9");
         text_view.set_text(text.as_str());
     }));
 
@@ -181,7 +183,9 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_equal.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let result = calculator::calc(String::from(text_view.text()));
-        text_view.set_text(result.as_str());
+        if check_exp_validation(String::from(text_view.text())) {
+            let result = calculator::calc(String::from(text_view.text()));
+            text_view.set_text(result.as_str());
+        }
     }));
 }
