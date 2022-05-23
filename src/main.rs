@@ -15,11 +15,9 @@ fn main() {
 }
 
 fn build_ui(application: &gtk::Application) {
-    // Create a new window, set its title and default size
     let window = gtk::ApplicationWindow::new(application);
     window.set_title(Some("Calculator"));
 
-    // Here we construct the grid that is going contain our buttons.
     let grid = gtk::Grid::builder()
         .margin_start(6)
         .margin_end(6)
@@ -109,6 +107,11 @@ fn build_ui(application: &gtk::Application) {
         text_view.set_text(text.as_str());
     }));
 
+    button_5.connect_clicked(clone!(@weak text_view => move |_btn| {
+        let text = format!("{}{}", text_view.text().as_str(), "5");
+        text_view.set_text(text.as_str());
+    }));
+
     button_6.connect_clicked(clone!(@weak text_view => move |_btn| {
         let text = format!("{}{}", text_view.text().as_str(), "6");
         text_view.set_text(text.as_str());
@@ -132,7 +135,7 @@ fn build_ui(application: &gtk::Application) {
     button_clear.connect_clicked(clone!(@weak text_view => move |_btn| {
         text_view.set_text("");
     }));
-    
+
     button_sign.connect_clicked(clone!(@weak text_view => move |_btn| {
         let ch = text_view.text().as_str().chars().nth(0).unwrap();
         let str = String::from(text_view.text());
@@ -153,22 +156,22 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_mutiplier.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "x");
+        let text = format!("{}{}", text_view.text().as_str(), " x ");
         text_view.set_text(text.as_str());
     }));
 
     button_divider.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "÷");
+        let text = format!("{}{}", text_view.text().as_str(), " ÷ ");
         text_view.set_text(text.as_str());
     }));
 
     button_minus.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "-");
+        let text = format!("{}{}", text_view.text().as_str(), " - ");
         text_view.set_text(text.as_str());
     }));
 
     button_plus.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), "+");
+        let text = format!("{}{}", text_view.text().as_str(), " + ");
         text_view.set_text(text.as_str());
     }));
 
@@ -179,6 +182,6 @@ fn build_ui(application: &gtk::Application) {
 
     button_equal.connect_clicked(clone!(@weak text_view => move |_btn| {
         let result = calculator::calc(String::from(text_view.text()));
-        text_view.set_text(result.to_string().as_str());
+        text_view.set_text(result.as_str());
     }));
 }
