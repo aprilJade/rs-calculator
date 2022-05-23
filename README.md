@@ -17,7 +17,14 @@ cargo run
 ## Todo
 - [ ] Code (As fast as I can...)
     - [ ] Handling invalid input from user.
+        - [x] Check is expression validate when click "=".
+        - [ ] Blocking input zero when input is empty.
+        - [ ] Output "NaN"when user try to divide by zero.
     - [ ] Handling buffer overflow.
     - [ ] Removing unnecessarily overlapped codes...
+- [ ] Feature
+    - [ ] Handling keyboard input
+        - [ ] Block user input non number or not supported operator.
+        - [ ] Support enter to calculate.
 - [ ] UI 
     - [ ] Separating UI and logic by refactor to composite template.
