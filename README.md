@@ -15,8 +15,9 @@ cargo run
 3. Calculate from postfix expression.
 
 ## Todo
-- [ ] Code 
+- [ ] Code (As fast as I can...)
     - [ ] Handling invalid input from user.
     - [ ] Handling buffer overflow.
+    - [ ] Removing unnecessarily overlapped codes...
 - [ ] UI 
     - [ ] Separating UI and logic by refactor to composite template.
