@@ -2,13 +2,15 @@
 This is minimal calculator implemented with rust programming language. 
 ![img](/resource/rs-calculator.png)
 ## How to build
-0. This source need to cargo and gtk4 library. If they aren't installed, you should install on your environment.
-1. Clone, build, run this repository
+- This source need to cargo and gtk4 library. If they aren't installed, you should install on your environment.
+- Clone, build, run this repository
 ```bash
 git clone https://github.com/aprilJade/rs-calculator.git
 cd rs-calculator
 cargo run
 ```
+- If you just build this, command `cargo build` insteadof `cargo run`.
+
 ## How to calculate
 1. Get infix expression from user.
 2. Convert infix expression to postfix expression.
