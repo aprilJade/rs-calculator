@@ -178,7 +178,7 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_point.connect_clicked(clone!(@weak text_view => move |_btn| {
-        if can_input_float_point(text_view.text().as_str()) {
+        if check_input_point_possible(text_view.text().as_str()) {
             let text = format!("{}{}", text_view.text().as_str(), ".");
             text_view.set_text(text.as_str());
         }
