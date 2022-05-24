@@ -18,6 +18,7 @@ cargo run
 - [ ] Code (As fast as I can...)
     - [ ] Handling invalid input from user.
         - [x] Check is expression validate when click "=".
+        - [x] Check if input floating point is possible. 
         - [ ] Blocking input zero when input is empty.
         - [ ] Output "NaN"when user try to divide by zero.
     - [ ] Handling buffer overflow.
