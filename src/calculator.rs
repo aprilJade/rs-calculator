@@ -38,6 +38,9 @@ pub fn calc(expression: String) -> String {
                 } else if (*value).eq("x") {
                     calc_stack.push(num1 * num2);
                 } else if (*value).eq("÷") {
+                    if num2 == 0.0 {
+                        return String::from("NaN");
+                    }
                     calc_stack.push(num1 / num2);
                 }
             }
