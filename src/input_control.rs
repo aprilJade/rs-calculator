@@ -3,7 +3,6 @@ pub fn check_exp_validation(exp: String) -> bool {
     let mut op_cnt = 0;
     let mut num_cnt = 0;
     for val in buf.iter() {
-        eprintln!("{}", *val);
         match *val {
             "+" | "-" | "x" | "÷"=> op_cnt += 1,
             _ => {
@@ -17,3 +16,11 @@ pub fn check_exp_validation(exp: String) -> bool {
     }
     op_cnt + 1 == num_cnt
 } 
+
+pub fn is_number(value: String) -> bool {
+    let test = value.parse::<f64>();
+    match test {
+        Ok(_num) => true,
+        Err(_err) => false
+    }
+}

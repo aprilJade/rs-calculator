@@ -178,8 +178,12 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_point.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text().as_str(), ".");
-        text_view.set_text(text.as_str());
+        let text = text_view.text();
+        let mut data: Vec<&str> = text.split(" ").collect();
+        if is_number(String::from(data.pop().unwrap())) {
+            let text = format!("{}{}", text_view.text().as_str(), ".");
+            text_view.set_text(text.as_str());
+        }
     }));
 
     button_equal.connect_clicked(clone!(@weak text_view => move |_btn| {
