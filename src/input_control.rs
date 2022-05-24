@@ -32,6 +32,20 @@ pub fn check_input_point_possible(value: &str) -> bool {
     true
 }
 
+pub fn check_input_zero_possible(value: &str) -> bool {
+    let mut data: Vec<&str> = value.split(" ").collect();
+    let last_num = data.pop().unwrap();
+    let test = last_num.parse::<f64>();
+    match test {
+        Ok(_num) => {
+            return _num != 0.0
+        },
+        Err(_err) => {
+            return true
+        }
+    }
+}
+
 fn is_number(value: &str) -> bool {
     let test = value.parse::<f64>();
     match test {

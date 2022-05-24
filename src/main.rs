@@ -85,8 +85,10 @@ fn build_ui(application: &gtk::Application) {
     window.show();
 
     button_0.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = format!("{}{}", text_view.text(), "0");
-        text_view.set_text(text.as_str());
+        if check_input_zero_possible(text_view.text().as_str()) {
+            let text = format!("{}{}", text_view.text(), "0");
+            text_view.set_text(text.as_str());
+        }
     }));
 
     button_1.connect_clicked(clone!(@weak text_view => move |_btn| {
