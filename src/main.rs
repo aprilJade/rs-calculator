@@ -178,9 +178,7 @@ fn build_ui(application: &gtk::Application) {
     }));
 
     button_point.connect_clicked(clone!(@weak text_view => move |_btn| {
-        let text = text_view.text();
-        let mut data: Vec<&str> = text.split(" ").collect();
-        if is_number(String::from(data.pop().unwrap())) {
+        if can_input_float_point(text_view.text().as_str()) {
             let text = format!("{}{}", text_view.text().as_str(), ".");
             text_view.set_text(text.as_str());
         }
