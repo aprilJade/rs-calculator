@@ -9,7 +9,7 @@ git clone https://github.com/aprilJade/rs-calculator.git
 cd rs-calculator
 cargo run
 ```
-- If you just build this, command `cargo build` insteadof `cargo run`.
+- If you just build this, command `cargo build` instead of `cargo run`.
 
 ## How to calculate
 1. Get infix expression from user.
